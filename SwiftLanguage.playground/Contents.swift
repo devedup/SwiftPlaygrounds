@@ -355,11 +355,125 @@ for (whatever, whoever) in literalDict {
 
 
 
+// MARK: Control Flow
+// -----------------------------------------------------------------------------------------------------
+
+for index in 1...5 {
+	print("\(index)")
+}
+
+let end = 10
+for _ in 1...end {
+	
+}
+
+// for
+for var index = 0; index < 10; index++ {
+	
+}
+
+// while
+var test = true
+while test {
+	test = false
+}
+
+// repeat
+test = true
+repeat {
+	test = false
+} while test
+
+
+// if else
+if test {
+	
+} else if test {
+	
+} else {
+	
+}
+
+var testString = "dave"
+
+// Switch - note there is no fall through, so you dont need the break
+switch testString {
+	case "dave":
+		print("dave here")
+		fallthrough
+	case "tom":
+		print("tome here")
+	case "dan", "john", "carl":
+		print("dan here")
+	default:
+		print("someone else")
+}
+
+// you can use fallthrough to allow it to fallthrough
+
+// interval matching
+
+var intervalInt = 68
+
+switch intervalInt {
+	case 0..<10:
+		print("ere")
+	case 10..<100:
+		print("hello")
+	default:
+		print("someone else")
+}
+
+
+// tuple binding
+
+let point = (0, 0)
+switch point {
+	case (0, 0):
+		print("ere")
+	case (1, 0):
+		print("hello")
+	case (_, 1):
+		print("another")
+	case (0, let y):
+		print("on the x acxis with a value of y \(y)")
+	case let (x, y) where x == -y:
+		print("another")
+	case let (x, y):
+		print("note no default case")
+}
 
 
 
+// continue and break work as normal, fallthrough can be used on a switch case statement
+
+// you can use labels with break and continue 
+
+// use a guard statement to set up design by contract
+
+func aMethodWithGuard(value: Int, contrived: String?) {
+	guard value > 5 else {
+		return
+	}
+	guard let contrived = contrived else {
+		return // or fatalError()
+	}
+}
+
+// API Availability
+
+// * is required and it means 'any other platform' will execute the if block with the minimum version in the deployment target
+
+if #available(iOS 9, OSX 10.10, tvOS 9.0, watchOS 1.0, *) {
+	// do this
+} else {
+	// do this
+}
 
 
+
+// MARK: Functions
+// -----------------------------------------------------------------------------------------------------
 
 
 
