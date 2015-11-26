@@ -266,6 +266,93 @@ print(result.characters.count)
 // MARK: Collection Types
 // -----------------------------------------------------------------------------------------------------
 
+var mutableArray = [String]()  // This is also example of creating an empty array
+let immutableArray = [String]()
+
+// arrays are bridged with NSArray
+
+// Can also write like this
+
+var array: Array<String>
+
+// Remebers type that is set to it
+var someInts = [Int]() // empty
+someInts.append(1)
+someInts += [4] //same as append
+someInts += [7]
+
+// Insert at index
+someInts.insert(3, atIndex: 1)
+someInts.removeAtIndex(1)
+
+// Set and get
+var itemAt2 = someInts[2]
+someInts[2] = 5
+
+someInts = [] // it's still an Int array
+
+// Array with default values
+var defaultsArray = [Int](count: 5, repeatedValue: 5)
+
+// another array by adding
+var anotherIntArray = defaultsArray + someInts
+
+// Array literals
+var literals = ["dave", "cass", "davey", "dave"]
+var resultLiterals = literals.indexOf("dave")
+
+var count = literals.count
+
+if literals.isEmpty {
+	print("yes")
+} else {
+	print("not empty")
+}
+
+// Iteration
+
+for item in literals {
+	print(item)
+}
+
+for (index, item) in literals.enumerate() {
+	print("item \(item) index \(index)")
+}
+
+// Sets (Bridged with NSSet)
+
+var letters = Set<Character>()
+var genres: Set = ["Rock", "Classical", "Pop"]
+
+
+// use methods intersect(), exclusiveOr(), union(), subtract() to create Set's from other sets
+
+
+// Dictionaries
+
+var dictionary = [String: Int]()
+dictionary = [:] // empty it
+
+var literalDict = ["dave" : 1, "cass": 2, "lore": 3]
+
+// Optionals returned
+if let value = literalDict["tom"] {
+	print("got it")
+} else {
+	print("not in there")
+}
+
+// Iterating
+
+for (key, value) in literalDict {
+	
+}
+
+for (whatever, whoever) in literalDict {
+	
+}
+
+
 
 
 
