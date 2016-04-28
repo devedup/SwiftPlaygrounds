@@ -168,9 +168,9 @@ let mul = 5 * 5
 let div = 9 / 5
 let remainder = 8 % 4
 let floatRemainder = 8 % 2.5
-let increment1 = add++
-let increment = ++add
-let decrement = --add
+//let increment1 = add += 1
+//let increment = add += 1
+//let decrement =add -= 1
 let negative = -add
 add += 2
 print(add)
@@ -227,7 +227,8 @@ let immutableString = ""
 var initialString = "dave"
 
 // not also here that params are constant by default, i made it mutable with var
-func workOnString(var string: String) {
+func workOnString(string: String) {
+	var string = string
     string = string + " casserly"
     print(string)
 }
@@ -368,9 +369,11 @@ for _ in 1...end {
 }
 
 // for
-for var index = 0; index < 10; index++ {
-	
-}
+//for var index = 0; index < 10; index += 1 {
+		// this c style is dprecated
+//}
+
+
 
 // while
 var test = true
@@ -458,6 +461,7 @@ func aMethodWithGuard(value: Int, contrived: String?) {
 	guard let contrived = contrived else {
 		return // or fatalError()
 	}
+	print(contrived)
 }
 
 // API Availability
@@ -476,7 +480,97 @@ if #available(iOS 9, OSX 10.10, tvOS 9.0, watchOS 1.0, *) {
 // -----------------------------------------------------------------------------------------------------
 
 
+func sayHelloWorld() -> String {
+	return "hello, world"
+}
 
+
+func sayHello(personName: String, alreadyGreeted: Bool) -> String {
+	if alreadyGreeted {
+		return sayHelloWorld()
+	} else {
+		return sayHelloWorld()
+	}
+}
+
+// Use a Tuple for multiple returns types:
+
+func minMax(array: [Int]) -> (min: Int, max: Int) {
+	var currentMin = array[0]
+	var currentMax = array[0]
+	for value in array[1..<array.count] {
+		if value < currentMin {
+			currentMin = value
+		} else if value > currentMax {
+			currentMax = value
+		}
+	}
+	return (currentMin, currentMax)
+}
+
+
+// external param names
+
+func someFunction(firstParameterName: Int, _ secondParameterName: Int) {
+	// function body goes here
+	// firstParameterName and secondParameterName refer to
+}
+
+// default param values
+
+func someFunction(parameterWithDefault: Int = 12) {
+	// function body goes here
+	// if no arguments are passed to the function call,
+	// value of parameterWithDefault is 12
+}
+someFunction(6) // parameterWithDefault is 6
+someFunction() // parameterWithDefault is 12”
+
+// Variadic parameters - A function may have at most one variadic parameter.
+
+func arithmeticMean(numbers: Double...) -> Double {
+	var total: Double = 0
+	for number in numbers {
+		total += number
+	}
+	return total / Double(numbers.count)
+}
+arithmeticMean(1, 2, 3, 4, 5)
+
+
+// In Out parameters:
+
+func swapTwoInts(inout a: Int, inout _ b: Int) {
+	let temporaryA = a
+	a = b
+	b = temporaryA
+}
+
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&someInt, &anotherInt)
+
+// Function types
+
+// Functions have a type which include the params and return type
+
+func printMathResult(mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+	print("Result: \(mathFunction(a, b))")
+}
+
+
+// Nested functions
+
+func chooseStepFunction(backwards: Bool) -> (Int) -> Int {
+	func stepForward(input: Int) -> Int { return input + 1 }
+	func stepBackward(input: Int) -> Int { return input - 1 }
+	return backwards ? stepBackward : stepForward
+}
+
+
+
+// MARK: Closures
+// -----------------------------------------------------------------------------------------------------
 
 
 
