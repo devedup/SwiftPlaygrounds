@@ -572,6 +572,18 @@ func chooseStepFunction(backwards: Bool) -> (Int) -> Int {
 // MARK: Closures
 // -----------------------------------------------------------------------------------------------------
 
+// see the seperate playground on closures for examples
+
+//  { (parameters) -> return type in
+//  	statements
+//  }
+
+// NonEscape
+
+// @noescape
+
+
+
 
 
 
